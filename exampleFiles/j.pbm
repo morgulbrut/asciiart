@@ -1,0 +1,12 @@
+P1          #Bitmap
+# Beispiel für das Bild des Buchstabens "U"
+6 9        #Breite des Bildes, Leerstelle, Höhe des Bildes
+1 0 0 0 1 0
+1 0 0 0 1 0
+1 0 0 0 1 0
+1 0 0 0 1 0
+1 0 0 0 1 0
+1 0 0 0 1 0
+1 0 0 0 1 0
+0 1 1 1 0 0
+0 0 0 0 0 0

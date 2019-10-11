@@ -4,6 +4,20 @@ import (
 	"testing"
 )
 
+func TestGetAsciiType(t *testing.T) {
+	t.Run("!", testGetAsciiFunc(33, '!'))
+	t.Run("\n", testGetAsciiFunc(10, '\n'))
+}
+
+func testGetAsciiFunc(n byte, expected rune) func(*testing.T) {
+	return func(t *testing.T) {
+		actual := GetASCII(n)
+		if actual != expected {
+			t.Errorf("Expected %v but instead got %v!", expected, actual)
+		}
+	}
+}
+
 func TestBlockelems(t *testing.T) {
 	expected := "▀ ▁ ▂ ▃ ▄ ▅ ▆ ▇ █ ▉ ▊ ▋ ▌ ▍ ▎ ▏ ▐ ░ ▒ ▓ ▔ ▕ ▖ ▗ ▘ ▙ ▚ ▛ ▜ ▝ ▞ ▟"
 	actual := Blockelems()
@@ -77,31 +91,31 @@ func testPNBWFunc(img string, expected string) func(*testing.T) {
 	}
 }
 
-
 func TestRenderASC(t *testing.T) {
-var img1 = `
+	var img1 = `
 
-    �������������  ��                                       �������������
-    ۲������۱���                                      ��   ۲�����������
-    ������ ������  mew-mew-mew-mew-mew                      ������ ������
- �� ۱���� ������  mew-mew-mew-mew-mew               ������ ������ ����۲
-    ������ ������  mew-mew-mew-mew-mew               �۲��� ������ ����۲
-    ������ ������  mew-mew-mew-mew-mew    ������     �۱��� �۲��� ۲��۲
-    ������ ۲����  mew-mew-mew-mew-mew               ������ ������ ������
-    ������ ������                      ������   �    ������ ������ ������
-    ������ ������ �۲���������� ������������� ������������� ������ ������
-    ������������� ������ ۲���� �۲��� ������ �۲��� ������ �������������
-    ������ ������ ������ ������ ������ ������ ������ ������ ������ ������
-    ������ ������ ������ ���۲� ������ ������ ������ ������ ������ �۲���
-   ������� ������ ۲���� ���۲� ������ �۲��� ������ ������ �۲��� ������
-    ������ ۲���� ������ ������ ������ �۲��� ������ ������ ������ ����۲ ��
-    ������ ������ ۱����������� ������ ������ ������������� ������ ����۲ ��
-    ������������� ������               ������        ������ �������������
-    ������                   �����              ��          ������
-SAUCE00SandS                              Dr. Dream           xrt                 19981207�
+	������������������������������������������������������������������߲
+	�       ��                                                         �
+	�                                                                  �
+	�                           �               �         drm          �
+������  ������ �  ������ ������ ���� ������ ��� ���������      ���������
+�۲����   ������  �۲��� �۲���  ����� ��۲�� ����� ��������� ���� ���������
+�������  �  �����  ������ ������������   ����� ������ �  ����������� �  ��۲��
+�۲���  � ���۲��۲��� ��۲��������� � ޲���� �۲��  �� ����� ����  �  ������  � ��������� ����������� �����   ۲���    ����� ������   �۲���������   ��۲���  ߲�  ���������      ��     ��� ������   ���   � �۲���  ������  ��߲��������
+	�  Vihino         ������      �����                           ��   �
+	�                                                                  �
+	�               xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx               �
+	�               xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx               �
+	�               xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx               �
+	�� ��           xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx         �     �
+	�               xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx               �
+	�               xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx               �
+	�                                                                  �
+	��������������������������������������������������������������������
+SAUCE00
 `
 
-var result1 = "aaaa"
+	var result1 = ""
 
 	t.Run("SandS.asc", testASCFunc(img1, result1))
 
