@@ -8,6 +8,18 @@ import (
 	"strings"
 )
 
+func RenderFile(fn string) string {
+	d, t := DetectFType(fn)
+	switch t {
+	case "PGM":
+		return RenderPNMBW(string(d))
+	case "PBM":
+		return RenderPNMBW(string(d))
+	default:
+		return ""
+	}
+}
+
 func OpenFile(fn string) []byte {
 	file, err := os.Open(fn)
 	if err != nil {
